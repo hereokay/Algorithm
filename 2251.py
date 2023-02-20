@@ -1,7 +1,7 @@
 from collections import deque
 
+q = deque()
 def bfs():
-    q = deque()
     q.append([0,0,cap_abc[2]])
 
     visited[0][0]=cap_abc[2]
@@ -16,20 +16,16 @@ def bfs():
                 if l_abc[_from] > 0 and l_abc[_to] != cap_abc[_to]:
                     test_abc = l_abc.copy()
                     trans(test_abc,_from,_to)
-                    value_a,value_b,value_c = test_abc
-                    if visited[value_a][value_b]== -1:
-                        visited[value_a][value_b] = value_c
-                        q.append(test_abc)
 
 
 def trans(l_abc, _from, _to):
-    total = l_abc[_from] + l_abc[_to]
-    if total >= cap_abc[_to] :
-        l_abc[_to] = cap_abc[_to]
-        l_abc[_from] = total - cap_abc[_to]
-    else:
-        l_abc[_to]=total
-        l_abc[_from]=0
+    water = min(l_abc[_from],cap_abc[_to]-l_abc[_to])
+    l_abc[_from] -=water
+    l_abc[_to] += water
+    if visited[l_abc[0]][l_abc[1]] == -1:
+        visited[l_abc[0]][l_abc[1]] =l_abc[2]
+        q.append(l_abc)
+
 
 
 cap_abc = list(map(int,input().split()))
