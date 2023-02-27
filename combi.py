@@ -1,20 +1,33 @@
-from sys import stdin
-input = stdin.readline
 
-n, m = map(int, input().split())
 
-# combinations
-
-res =[]
-def btr(v,cnt):
-
-    if cnt == m:
-        print(*res)
+ans = []
+def combi(v, cnt):
+    if cnt == r:
+        print(ans)
         return
 
-    for i in range(v,n+1):
-        res.append(i)
-        btr(i+1,cnt+1)
-        res.pop()
+    for i in range(v,n):
+        ans.append(board[i])
+        combi(i+1,cnt+1)
+        ans.pop()
 
-btr(1,0)
+
+def permu(cnt):
+
+    if cnt == r:
+        print(ans)
+        return
+
+    for i in range(n):
+            ans.append(board[i])
+            permu(cnt+1)
+            ans.pop()
+
+
+
+n, r = 5, 2
+
+board =list('ABCDE')
+visited = [0]*n
+#combi(0,0)
+permu(0)
