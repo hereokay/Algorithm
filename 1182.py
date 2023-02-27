@@ -17,6 +17,7 @@ board = list(map(int,input().split()))
 btr(0,0)
 
 if s == 0:
+
     ans -=1
 
 print(ans)
