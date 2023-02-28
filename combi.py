@@ -1,33 +1,37 @@
+def find(x):
+    if x== parent[x]:
+        return x
+    else:
+        root_x = find(parent[x])
+        parent[x] = root_x
+        return parent[x]
 
+def union(x, y):
+    root_x = find(x)
+    root_y = find(y)
 
-ans = []
-def combi(v, cnt):
-    if cnt == r:
-        print(ans)
-        return
+    if root_x != root_y:
+        parent[root_y] = root_x
+        number[root_x] += number[root_y]
 
-    for i in range(v,n):
-        ans.append(board[i])
-        combi(i+1,cnt+1)
-        ans.pop()
+test_cases = int(input())
 
+for _ in range(test_cases):
+    parent = dict()
+    number = dict()
 
-def permu(cnt):
+    f = int(input())
 
-    if cnt == r:
-        print(ans)
-        return
+    for _ in range(f):
+        x, y = input().split(" ")
 
-    for i in range(n):
-            ans.append(board[i])
-            permu(cnt+1)
-            ans.pop()
+        if x not in parent:
+            parent[x] = x
+            number[x] = 1
+        if y not in parent:
+            parent[y] = x
+            number[y] = 1
 
+        union(x, y)
+        print(number[find[x]])
 
-
-n, r = 5, 2
-
-board =list('ABCDE')
-visited = [0]*n
-#combi(0,0)
-permu(0)
