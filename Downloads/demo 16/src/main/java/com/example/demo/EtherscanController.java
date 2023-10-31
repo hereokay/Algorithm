@@ -30,4 +30,5 @@ public class EtherscanController {
     public ResponseEntity<GasCostSummary> getGasCostSummary(@RequestParam String address) {
         return ResponseEntity.ok(etherscanService.getGasCostSummary(address));
     }
+
 }

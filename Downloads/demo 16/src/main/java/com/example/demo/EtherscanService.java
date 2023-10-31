@@ -57,7 +57,6 @@ public class EtherscanService {
         List<BigDecimal> gasCostsInEth = getGasCostsInEth(address);
         BigDecimal totalCost = gasCostsInEth.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
         int count = gasCostsInEth.size();
-
         return new GasCostSummary(totalCost, count);
     }
 }
