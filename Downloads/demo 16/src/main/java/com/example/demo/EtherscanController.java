@@ -26,4 +26,8 @@ public class EtherscanController {
     public ResponseEntity<List<BigDecimal>> getGasCostsInEth(@RequestParam String address) {
         return ResponseEntity.ok(etherscanService.getGasCostsInEth(address));
     }
+    @GetMapping("/gas-cost-summary")
+    public ResponseEntity<GasCostSummary> getGasCostSummary(@RequestParam String address) {
+        return ResponseEntity.ok(etherscanService.getGasCostSummary(address));
+    }
 }
