@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "alchemy-sdk": "^3.1.0",
+    "dotenv": "^16.3.1",
+    "web3": "^4.3.0"
+  }
+  ,"type": "module"
+}
